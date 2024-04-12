@@ -222,7 +222,7 @@ section{
     margin-top: 10vh;
     margin-right: 10vh;
     background-color: var(--bg-color);
-    background-image: url("/images/bg.webp");
+    background-image: url("/DeepFake_MultiFace_Videos/frontend//images/bg.webp");
     background-repeat: no-repeat;
     background-size: auto 70%; /* Adjust the height percentage as needed */
     background-position: right center; /* Aligns the image to the right horizontally and centers it vertically */
