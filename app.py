@@ -1,5 +1,5 @@
 import pickle
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 from PIL import Image
 from io import BytesIO
 import base64
@@ -15,45 +15,49 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-MODEL_PATH = 'model.h5'  
+MODEL_PATH = 'DeepFake_MultiFace_Videos\\model.h5'  
 
 model = load_model(MODEL_PATH)
 model.make_predict_function()
 
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = 'DeepFake_MultiFace_Videos\\uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 @app.route('/summary', methods=['POST'])
 def process_image():
     # Check if an image is included in the request
-    if 'image' not in request.form:
-        return jsonify({'error': 'No image provided'}), 400
+    try:
+        if 'image' not in request.files:
+            return jsonify({'error': 'No image provided'}), 400
 
-    # Get the base64 encoded image data from the request
-    image_data_base64 = request.form['image']
+        # Get the base64 encoded image data from the request
+        image_data= request.files['image']
 
-    # Decode the base64 encoded image data
-    image_data = base64.b64decode(image_data_base64.split(',')[1])
+        # Decode the base64 encoded image data
+        # image_data = base64.b64decode(image_data_base64.split(',')[1])
 
-    # Convert the image data to a PIL Image object
-    pil_image = Image.open(BytesIO(image_data))
+        # Convert the image data to a PIL Image object
+        pil_image = Image.open(image_data)
 
-    # Save the image to the uploads folder
-    image_path = os.path.join(app.config['UPLOAD_FOLDER'], 'process.png')
-    pil_image.save(image_path)
+        # Save the image to the uploads folder
+        image_path = os.path.join(app.config['UPLOAD_FOLDER'], 'process.png')
+        pil_image.save(image_path)
 
-    preds=model_predict(image_path,model)
-    # THRESHOLD = 0
-    if preds[0][0] >= 1:
-        result = "Fake"
-    elif preds[0][0] >= 0 :
-        result = "Real"
-    
-    
-    # Respond with a success message
-    return jsonify({'message': result}), 200
+        preds = model_predict(image_path, model)
 
+        # Determine the result based on the prediction
+        if preds[0][0] >= 1:
+            result = "Fake"
+        elif preds[0][0] >= 0:
+            result = "Real"
 
+        # Respond with a success message
+        print(result)
+        return jsonify({'message': result}), 200
+    except Exception as e:
+        # If an error occurs, return an error response
+        return jsonify({'error': str(e)}), 500
 
 def model_predict(img_path, model):
     img = image.load_img(img_path, target_size=(256, 256))

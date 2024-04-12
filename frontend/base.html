@@ -7,6 +7,27 @@
   <title>Detection</title>
 </head>
 <body>
+  <header class="header">
+    <a href="" class="logo"><img src="/DeepFake_MultiFace_Videos/frontend/logo.png" alt=""></a>
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#cakes">Services</a>
+        <a href="#cheese-cakes">Resources</a>
+        <a href="#new-arrivals">Use Cases</a>
+        <a href="#about ">About</a>
+        <!-- <a href="">review</a> -->
+        <a href="">contact</a>
+    </nav>
+    
+</header>
+<section class="home" id="home">
+  <div class="hero">
+      <h3>Software Demo</h3>
+      <p>Test your images and videos on our playground</p>
+      <h1>Perform verification on your pictures to find whether they are deepfaked or real. </h1>
+      
+  </div>
+</section>
   <div class="flip-card-3D-wrapper">
     <div id="flip-card" class="flip-card">
       <!-- Front Side -->
@@ -14,18 +35,23 @@
         <button id="video-upload-btn">Upload Video</button>
         <p>Video</p>
         <button id="flip-card-btn-turn-to-back">Image</button>
+        
       </div>
       <!-- Back Side -->
       <div class="flip-card-back">
         <input type="file" accept="image/*" id="image-upload" style="display: none;" />
         <button id="image-upload-btn">Upload Image</button>
+        
         <p>Image</p>
         <button id="flip-card-btn-turn-to-front">Videos</button>
+        
       </div>
+      
     </div>
   </div>
-  <input type="file" accept="video/*" id="video-upload" style="display: none;" />
   <div id="output"></div>
+  <input type="file" accept="video/*" id="video-upload" style="display: none;" />
+  
   <script src="/DeepFake_MultiFace_Videos/frontend/basescript.js"></script>
 </body>
 </html>

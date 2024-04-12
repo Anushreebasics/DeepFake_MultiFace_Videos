@@ -25,36 +25,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
 
-  if (videoUploadBtn && imageUploadBtn && videoUploadInput && imageUploadInput && outputDiv) {
+  if (imageUploadBtn && imageUploadInput && outputDiv) {
 
-    videoUploadBtn.addEventListener("click", function () {
-      videoUploadInput.click();
-    });
+    // videoUploadBtn.addEventListener("click", function () {
+    //   videoUploadInput.click();
+    // });
 
     imageUploadBtn.addEventListener("click", function () {
       imageUploadInput.click();
     });
 
     // Add event listener for video upload input
-    videoUploadInput.addEventListener("change", async function () {
-      try {
-        const file = videoUploadInput.files[0];
+    // videoUploadInput.addEventListener("change", async function () {
+      // try {
+    //     const file = videoUploadInput.files[0];
 
-        const formData = new FormData();
-        formData.append("video", file);
+    //     const formData = new FormData();
+    //     formData.append("video", file);
 
-        const response = await fetch("http://127.0.0.1:5000/summary", {
-          method: "POST",
-          body: formData,
-        });
+    //     const response = await fetch("http://127.0.0.1:5000/summary", {
+    //       method: "POST",
+    //       body: formData,
+    //     });
 
-        const data = await response.json();
-        outputDiv.innerText = data.message;
-      } catch (error) {
-        console.error("Error processing video:", error);
-        outputDiv.innerText = "Error processing video.";
-      }
-    });
+    //     const data = await response.json();
+    //     outputDiv.innerText = data.message;
+    //   } catch (error) {
+    //     console.error("Error processing video:", error);
+    //     outputDiv.innerText = "Error processing video.";
+    //   }
+    // });
 
     // Add event listener for image upload input
     imageUploadInput.addEventListener("change", async function () {
@@ -78,8 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Add event listener for flip to front button
-    
-  } else {
-    console.error("One or more elements not found.");
   }
+  // } else {
+  //   console.error("One or more elements not found.");
+  
 });
