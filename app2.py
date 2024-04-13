@@ -4,8 +4,13 @@ import os
 import uuid
 import cv2
 import numpy as np
-from tensorflow import keras  # Assuming you're using TensorFlow 2.x with Keras
+from tensorflow import keras  
 from keras.applications import inception_v3
+
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
 
 IMG_SIZE = 224
 BATCH_SIZE = 64
@@ -14,12 +19,10 @@ EPOCHS = 10
 MAX_SEQ_LENGTH = 20
 NUM_FEATURES = 2048
 
-# Flask app setup
-app = Flask(__name__)
 
-# Video upload configuration (adjust as needed)
-MODEL_PATH = 'DeepFake_MultiFace_Videos/my_model.h5'
-UPLOAD_FOLDER = 'DeepFake_MultiFace_Videos/uploads'
+
+MODEL_PATH = 'DeepFake_MultiFace_Videos\\my_model.h5'
+UPLOAD_FOLDER = 'DeepFake_MultiFace_Videos\\uploads'
 ALLOWED_EXTENSIONS = {'mp4', 'avi'}
 
 def allowed_file(filename):
@@ -98,15 +101,7 @@ def predict_deepfake():
         if video_file and allowed_file(video_file.filename):
             video_path = os.path.join(UPLOAD_FOLDER, video_file.filename)
             video_file.save(video_path)
-
-            # Prepare video for prediction
-            # features, mask = (video_path)
-
-            # # Load the pre-trained model
-            # model = keras.models.load_model(MODEL_PATH)
-
-            # Predict using the model
-            
+           
 
             print(sequence_prediction(video_path))
             if(sequence_prediction(video_path) <= 0.76): 
