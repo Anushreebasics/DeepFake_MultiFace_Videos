@@ -1,18 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
   const uploadButton = document.getElementById('uploadButton');
-  const imageInput = document.getElementById('imageInput');
+  const videoInput = document.getElementById('videoInput');
   const resultDiv = document.getElementById('result');
 
   uploadButton.addEventListener('click', async (event) => {
       event.preventDefault();
-      const file = imageInput.files[0];
+      const file = videoInput.files[0];
       if (!file) {
-          alert('Please select an image file.');
+          alert('Please select a video file.');
           return;
       }
 
       const formData = new FormData();
-      formData.append('image', file);
+      formData.append('video', file);
 
       try {
           const response = await fetch("http://127.0.0.1:5000/summary", {
