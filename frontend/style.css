@@ -473,9 +473,9 @@ section{
 
 /* NEWS CARAUSEL */
 
-  .slider {
+.slider {
     height: 200px; /* Adjust the height of the slider container */
-    margin-top: 80px;
+    margin-top: 100px;
     overflow: hidden;
     position: relative;
   }
@@ -484,17 +484,17 @@ section{
     border-radius: 13px;
     border-color: #0e0d0d;
     overflow: hidden;
-    width: 10px; /* Adjust the width of each slide */
-    height: 50px; /* Adjust the height of each slide */
+    width: 500px; /* Sets the width of each slide to 500px */
+    height: 500px; /* Sets the height of each slide to 500px */
     position: relative;
     flex-shrink: 0;
     transition: transform 0.25s ease;
   }
   
   .slide img {
-    width: 800px; /* Ensure the image fills the slide */
-    height: 400px; /* Ensure the image fills the slide */
-    object-fit:cover; /* Or any other desired value */
+    width: 105%; /* Ensures the image fills the slide (500px by 500px) */
+    height: 28%; /* Ensures the image fills the slide (500px by 500px) */
+    object-fit: cover; /* Or any other desired value */
   }
   
   .slider .slide-track {
