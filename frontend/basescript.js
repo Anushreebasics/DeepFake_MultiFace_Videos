@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const uploadButton = document.getElementById('uploadButton');
-    const videoInput = document.getElementById('videoInput');
+    const videoInput = document.getElementById('fileToUpload');
     const resultDiv = document.getElementById('result');
   
     uploadButton.addEventListener('click', async (event) => {

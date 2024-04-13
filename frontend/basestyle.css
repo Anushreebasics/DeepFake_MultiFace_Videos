@@ -1,47 +1,73 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  /* background-image: url(https://s22.postimg.cc/ngk0detjl/sea-3652697.jpg); */
+  background-color: rgb(199, 199, 219);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.container {
-  max-width: 600px;
-  margin: 50px auto;
-  text-align: center;
+.center {
+    display: block;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
 }
 
-h1 {
-  color: #333;
+.center-block {
+  display: block;
+  margin-left: 22%;
 }
 
-<<<<<<< HEAD
-input[type="file"] {
-  margin-bottom: 20px;
-=======
-#output {
-  /* display: block; */
-  /* margin-bottom: 20px; */
-  margin-top: 100px;
+#result{
+  font-size: 2rem;
   color: black;
-  font-size: 50px;
-  font-weight: 700;
-  line-height: 1.2;
->>>>>>> ab5d657 (updated)
 }
+
+p {
+  font-family:Montserrat;
+}
+
 
 button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+background-image:linear-gradient(-180deg, #e0ddeb 0%, #b3b3b3 100%);
+border:1px solid #ebe9f0;
+box-shadow:0 1px 2px 0 rgba(0,0,0,0.20), inset 0 2px 0 0 #ffffff;
+border-radius:6px;
+width:143px;
+height:34px;
+margin: 0 auto;
 }
-
 button:hover {
   background-color: #0056b3;
 }
+/* .btn2 {
+background-color: Transparent;
+background-repeat:no-repeat;
+border: none;
+cursor:pointer;
+overflow: hidden;        
+font-family:AvenirNext-Medium;
+font-size:16px;
+color:#4a4a4a;
+text-align:left;
+} */
 
-#result {
-  margin-top: 20px;
+
+p {
+font-family:Montserrat;
+font-size:18px;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    color: black;
+    
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
