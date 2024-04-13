@@ -101,10 +101,10 @@ def predict_deepfake():
         if video_file and allowed_file(video_file.filename):
             video_path = os.path.join(UPLOAD_FOLDER, video_file.filename)
             video_file.save(video_path)
-           
+            ans=sequence_prediction(video_path)
 
-            print(sequence_prediction(video_path))
-            if(sequence_prediction(video_path) <= 0.76): 
+            print(ans)
+            if(ans <= 0.76): 
                 is_deepfake="FAKE"
             else:
                 is_deepfake="REAL"
