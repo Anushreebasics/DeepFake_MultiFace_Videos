@@ -1,85 +1,34 @@
-document.addEventListener('DOMContentLoaded', function(event) {
+document.addEventListener('DOMContentLoaded', () => {
+  const uploadButton = document.getElementById('uploadButton');
+  const imageInput = document.getElementById('imageInput');
+  const resultDiv = document.getElementById('result');
 
-  document.getElementById('flip-card-btn-turn-to-back').style.visibility = 'visible';
-  document.getElementById('flip-card-btn-turn-to-front').style.visibility = 'visible';
-
-  document.getElementById('flip-card-btn-turn-to-back').onclick = function() {
-  document.getElementById('flip-card').classList.toggle('do-flip');
-  };
-
-  document.getElementById('flip-card-btn-turn-to-front').onclick = function() {
-  document.getElementById('flip-card').classList.toggle('do-flip');
-  };
-
-});
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const videoUploadBtn = document.getElementById("video-upload-btn");
-  const imageUploadBtn = document.getElementById("image-upload-btn");
-  const videoUploadInput = document.getElementById("video-upload");
-  const imageUploadInput = document.getElementById("image-upload");
-  const outputDiv = document.getElementById("output");
-  
-
-  
-
-  if (imageUploadBtn && imageUploadInput && outputDiv) {
-
-    // videoUploadBtn.addEventListener("click", function () {
-    //   videoUploadInput.click();
-    // });
-
-    imageUploadBtn.addEventListener("click", function () {
-      imageUploadInput.click();
-    });
-
-    // Add event listener for video upload input
-    // videoUploadInput.addEventListener("change", async function () {
-      // try {
-    //     const file = videoUploadInput.files[0];
-
-    //     const formData = new FormData();
-    //     formData.append("video", file);
-
-    //     const response = await fetch("http://127.0.0.1:5000/summary", {
-    //       method: "POST",
-    //       body: formData,
-    //     });
-
-    //     const data = await response.json();
-    //     outputDiv.innerText = data.message;
-    //   } catch (error) {
-    //     console.error("Error processing video:", error);
-    //     outputDiv.innerText = "Error processing video.";
-    //   }
-    // });
-
-    // Add event listener for image upload input
-    imageUploadInput.addEventListener("change", async function () {
-      try {
-        const file = imageUploadInput.files[0];
-
-        const formData = new FormData();
-        formData.append("image", file);
-
-        const response = await fetch("http://127.0.0.1:5000/summary", {
-          method: "POST",
-          body: formData,
-        });
-
-        const data = await response.json();
-        outputDiv.innerText = data.message;
-      } catch (error) {
-        console.error("Error processing image:", error);
-        outputDiv.innerText = "Error processing image.";
+  uploadButton.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const file = imageInput.files[0];
+      if (!file) {
+          alert('Please select an image file.');
+          return;
       }
-    });
 
-    // Add event listener for flip to front button
-  }
-  // } else {
-  //   console.error("One or more elements not found.");
-  
+      const formData = new FormData();
+      formData.append('image', file);
+
+      try {
+          const response = await fetch("http://127.0.0.1:5000/summary", {
+              method: 'POST',
+              body: formData
+          });
+
+          if (!response.ok) {
+              throw new Error('Network response was not ok.');
+          }
+
+          const data = await response.json();
+          resultDiv.innerHTML = `<p>Result: ${data.message}</p>`;
+      } catch (error) {
+          console.error('Error:', error);
+          resultDiv.innerHTML = '<p>An error occurred. Please try again later.</p>';
+      }
+  });
 });
