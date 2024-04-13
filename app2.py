@@ -21,8 +21,8 @@ NUM_FEATURES = 2048
 
 
 
-MODEL_PATH = 'DeepFake_MultiFace_Videos\\my_model.h5'
-UPLOAD_FOLDER = 'DeepFake_MultiFace_Videos\\uploads'
+MODEL_PATH = 'my_model.h5'
+UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'mp4', 'avi'}
 
 def allowed_file(filename):
