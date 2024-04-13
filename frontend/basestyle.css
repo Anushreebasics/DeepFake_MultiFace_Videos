@@ -14,8 +14,19 @@ h1 {
   color: #333;
 }
 
+<<<<<<< HEAD
 input[type="file"] {
   margin-bottom: 20px;
+=======
+#output {
+  /* display: block; */
+  /* margin-bottom: 20px; */
+  margin-top: 100px;
+  color: black;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.2;
+>>>>>>> ab5d657 (updated)
 }
 
 button {
