@@ -23,12 +23,12 @@ To use this application, follow these steps:
 2. Navigate to the project directory:
 ```
 cd DeepFake_MultiFace_Videos
-
+```
 3. Run the Flask application by executing the app2.py file:
 
 ```
 python3 app2.py
-
+```
 
 4. Once the server is running, access the application by clicking on the "Try it now" button on the website.
 5. Upload a video file by clicking on the "Choose file" button, then click on "Upload". The application will process the video and provide the result indicating the presence of deepfake manipulation.
