@@ -1,5 +1,8 @@
 Flask
 Gunicorn
+PIL
+pickle
+cv2
 numpy
 keras
 tensorflow
