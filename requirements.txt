@@ -1,12 +1,8 @@
 Flask
-Gunicorn
-Image
-BytesIO
-base64
-os
-cv2
+
 numpy
-CORS
+keras
+tensorflow
 
 
 
